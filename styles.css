@@ -1,0 +1,154 @@
+/* Tumaini Community Initiative — shared stylesheet
+   Presentation lives here, not in the HTML (no <font>, <center> or bgcolor). */
+
+:root {
+  --green: #2E6B4F;
+  --green-dark: #1F4D38;
+  --text: #1E1E1E;
+  --muted: #555555;
+  --bg: #FFFFFF;
+  --tint: #F3F6F4;
+  --border: #CCCCCC;
+  --focus: #F2C14E;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;          /* relative units respect the user's text-size setting */
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Skip link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--green-dark);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+.skip-link:focus { left: 0; }
+
+/* Visible focus for every interactive element */
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+header {
+  background: var(--green);
+  color: #fff;
+}
+.header-inner,
+main,
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.site-name {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 0 0.25rem;
+}
+.tagline { margin: 0 0 0.75rem; font-size: 0.95rem; }
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 3px solid transparent;
+}
+nav a:hover { border-bottom-color: #fff; }
+nav a[aria-current="page"] { border-bottom-color: var(--focus); font-weight: bold; }
+
+main { padding-top: 1.5rem; padding-bottom: 2rem; }
+
+h1 { font-size: 1.9rem; line-height: 1.25; color: var(--green-dark); }
+h2 { font-size: 1.35rem; color: var(--green-dark); margin-top: 2rem; }
+h3 { font-size: 1.1rem; }
+
+a { color: var(--green-dark); }
+
+img { max-width: 100%; height: auto; }   /* images scale on small screens */
+
+figure { margin: 1.5rem 0; }
+figcaption { font-size: 0.9rem; color: var(--muted); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.card-grid li {
+  background: var(--tint);
+  border-left: 4px solid var(--green);
+  padding: 1rem;
+}
+.card-grid h3 { margin-top: 0; }
+
+dl dt { font-weight: bold; margin-top: 0.75rem; }
+dl dd { margin: 0.25rem 0 0 1.25rem; }
+
+/* Data table */
+.table-wrap { overflow-x: auto; }   /* table scrolls inside its box on phones */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+  margin: 1rem 0;
+}
+caption {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+thead th { background: var(--green); color: #fff; }
+tbody th { background: var(--tint); }
+td.num { text-align: right; }
+tfoot td { font-size: 0.9rem; color: var(--muted); }
+
+.note {
+  background: var(--tint);
+  border-left: 4px solid var(--focus);
+  padding: 0.75rem 1rem;
+}
+
+footer {
+  background: var(--tint);
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.footer-inner { padding-top: 1rem; padding-bottom: 1rem; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.5rem; }
+  .site-name { font-size: 1.2rem; }
+}
+
+.table-wrap:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
